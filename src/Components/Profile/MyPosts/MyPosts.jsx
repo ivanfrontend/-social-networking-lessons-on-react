@@ -7,22 +7,25 @@ import {AddPostActionCreator, NewPostActionCreator} from "../../../redux/profile
 // let addPost = React.createRef();
 
 let MyPosts = (props) =>{
-    let posts = props.dataPost.post.map( post => <Post massage={post.post} like={post.likecount} />);
-    let addButton = () =>{
-        //props.addPost();
-        props.dispatch(AddPostActionCreator());
+    
+    let posts = props.posts.map( post => <Post massage={post.post} like={post.likecount} />);
+
+    let onAddPost = () =>{
+        props.addPost();
+        //props.dispatch(AddPostActionCreator());
     }
 
-    let changeText = (e) => {
+    let onPostChange = (e) => {
         let text = e.target.value;
         //props.newPost(text);
-        props.dispatch(NewPostActionCreator(text));
+        props.updateNewPostText(text);
+        //props.dispatch(NewPostActionCreator(text));
     }
     return(
         
             <div>
-            <textarea onChange={changeText}  value={props.dataPost.newpost}></textarea>
-            <button onClick={addButton}>Add</button>
+            <textarea onChange={onPostChange}  value={props.newPostText}></textarea>
+            <button onClick={onAddPost}>Add</button>
             <div>MyPosts</div>
                 {posts}
             </div>

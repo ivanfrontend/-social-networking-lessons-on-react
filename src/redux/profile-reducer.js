@@ -7,7 +7,7 @@ let initialState = {
         {id: 2, post: 'i\'am fine', likecount: 15},
         {id: 3, post: 'yo', likecount: 8}
     ],
-    newpost: 'Value default'
+    newPostText: 'Value default'
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -15,16 +15,15 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST:
         let newPost ={
             id: 4,
-            post: state.newpost,
+            post: state.newPostText,
             likecount: 0
         }
         state.post.push(newPost);
-        state.newpost = '';
+        state.newPostText = '';
         return state;
 
         case NEW_POST: 
-        let newPostText = action.textUser;
-        state.newpost = newPostText; 
+        state.newPostText = action.textUser; 
         return state; 
 
         default : 
