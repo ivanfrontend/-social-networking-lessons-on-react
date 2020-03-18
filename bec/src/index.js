@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import store from "./redux/redux-store";
+import store from "./redux/state";
 import {BrowserRouter} from "react-router-dom"
 //import state, {subscribe} from "./redux/state"
 //import {addPost} from './redux/state'
@@ -20,10 +20,7 @@ let renderTree = (state) =>{
 
 renderTree(store.getState());
 
-store.subscribe( () => {
-    let state = store.getState();
-    renderTree(state);
-} );
+store.subscribe(renderTree);
 
 
 

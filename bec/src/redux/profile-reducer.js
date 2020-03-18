@@ -1,16 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const NEW_POST = 'NEW-POST';
 
-let initialState = {
-    post:  [
-        {id: 1, post: 'hi', likecount: 19},
-        {id: 2, post: 'i\'am fine', likecount: 15},
-        {id: 3, post: 'yo', likecount: 8}
-    ],
-    newpost: 'Value default'
-};
-
-const profileReducer = (state = initialState, action) => {
+const profileReducer = (state, action) => {
     switch(action.type){
         case ADD_POST:
         let newPost ={
