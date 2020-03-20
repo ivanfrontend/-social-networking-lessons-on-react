@@ -5,30 +5,29 @@ import Message from './Message/Message'
 import {NavLink} from "react-router-dom";
 import { updateNewMessageBodyCreator, sendMessageCreator } from '../../redux/dialogs-reducer';
 import Dialogs from './Dialogs';
+import StoreContext from '../../StoreContext';
 // let addText = React.createRef();
 
-const DialogsContainer = (props) => {
-
-    let state = props.store.getState().dialogsPage;
-    
-    let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator());
+const DialogsContainer = () => {
+    return ( <StoreContext.Consumer >  
+        {
+        (store) => {
+            let state = store.getState().dialogsPage;
+            let onSendMessageClick = () => {
+                store.dispatch(sendMessageCreator());
+            }
+            let onNewMessageChange = (body) => {
+                store.dispatch(updateNewMessageBodyCreator(body));
+            }
+            return <Dialogs 
+            updateNewMessageBody={onNewMessageChange} 
+            sendMessage={onSendMessageClick}
+            dialogsPage={state} />
+        }
+     
     }
-
-    let onNewMessageChange = (body) => {
-        // let body = e.target.value;
-        props.store.dispatch(updateNewMessageBodyCreator(body));
-        
-    }
-
-    // let addMessage = () =>{
-    //     let textMess = addText.current.value;
-    //     alert(textMess);
-    // }
-    return (<Dialogs 
-        updateNewMessageBody={onNewMessageChange} 
-        sendMessage={onSendMessageClick}
-        dialogsPage={state} />)
+     </StoreContext.Consumer>
+        )
 }
 
 

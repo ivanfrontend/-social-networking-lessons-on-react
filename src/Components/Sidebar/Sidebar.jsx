@@ -7,6 +7,7 @@ import Friends from './Friends/Friends'
 
 
 let Sidebar = (props) =>{
+    // debugger
     let friend = props.dataFriends.firend.map( friend => <Friends friendsInfo={friend.name} />)
 
     return(
