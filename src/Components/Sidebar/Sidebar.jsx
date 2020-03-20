@@ -8,7 +8,7 @@ import Friends from './Friends/Friends'
 
 let Sidebar = (props) =>{
     // debugger
-    let friend = props.dataFriends.firend.map( friend => <Friends friendsInfo={friend.name} />)
+    // let friend = props.dataFriends.firend.map( friend => <Friends friendsInfo={friend.name} />)
 
     return(
         <div className={s.sidebar}>
@@ -23,7 +23,7 @@ let Sidebar = (props) =>{
             </div>
             <div>Music</div>
             <div>Settings</div>
-            {friend}
+            {/* {friend} */}
         </div>
        )
 }

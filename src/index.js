@@ -4,10 +4,11 @@ import './index.css';
 import App from './App';
 import store from "./redux/redux-store";
 import {BrowserRouter} from "react-router-dom"
-import StoreContext, { Provider } from './StoreContext';
+// import StoreContext, { Provider } from './StoreContext';
 //import state, {subscribe} from "./redux/state"
 //import {addPost} from './redux/state'
 //import {NewPost} from './redux/state'
+import {Provider} from 'react-redux';
 
 
 let renderTree = () =>{

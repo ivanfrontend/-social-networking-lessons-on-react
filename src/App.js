@@ -7,24 +7,23 @@ import Dialogs from './Components/Dialogs/Dialogs';
 import News from './Components/News/News';
 import {BrowserRouter, Route} from 'react-router-dom';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
-import StoreContext from './StoreContext';
+// import StoreContext from './StoreContext';
 
 function App(props) {
   let test = "App";
   return (
       <div className={`${test}`}>
         <Header/>
-        {/* <Sidebar dataFriends={props.state.sidebar} /> */}
-        <StoreContext.Consumer>
+        <Sidebar />
+        {/* <StoreContext.Consumer>
           {
             (store) => {
-              // debugger
               let state = store.getState();
              return <Sidebar dataFriends={state.sidebar} />
             }
            
           }
-        </StoreContext.Consumer>
+        </StoreContext.Consumer> */}
         
         <div className="app_content">
           <Route path='/profile' render={() => <Profile />} />
