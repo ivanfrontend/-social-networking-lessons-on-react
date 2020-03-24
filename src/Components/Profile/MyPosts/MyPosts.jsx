@@ -8,7 +8,7 @@ import {AddPostActionCreator, NewPostActionCreator} from "../../../redux/profile
 
 let MyPosts = (props) =>{
     
-    let posts = props.posts.map( post => <Post massage={post.post} like={post.likecount} />);
+    let posts = props.posts.map( post => <Post massage={post.post} key={post.id} like={post.likecount} />);
 
     let onAddPost = () =>{
         props.addPost();
