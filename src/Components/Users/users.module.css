@@ -1,0 +1,22 @@
+.wrap_flex{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.photo_and_button{
+    padding: 5px 10px 5px 5px;
+}
+
+.user_info{
+    padding: 5px 5px 5px 10px;
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: 1px solid #fff;
+    border-radius: 7px;
+}
+
+.wi_50{width: 50%;}
+.wi_100{width: 100%;}
