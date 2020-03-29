@@ -4,21 +4,20 @@ import * as axios from 'axios';
 import avatar_base from '../../assets/img/avatar_base.png'
 let Users = (props) => {
         
-    if(props.users.length  === 0){
+   
 
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then( response => {
-            // debugger
+
+    let getUsers = () => {
+        if(props.users.length  === 0){
+            axios.get('https://social-network.samuraijs.com/api/1.0/users').then( response => {
             props.setUsers(response.data.items)
-        } )
-
-        // props.setUsers([{id: 1, photoUrl: 'https:/img/img.png', followed: false, fullName: 'Ivan V', status: 'test statut', location: {city: 'Minsk', country: 'Belarus1'} },
-        // {id: 2, photoUrl: 'https:/img/img.png', followed: false, fullName: 'Dmitri V', status: 'test statut', location: {city: 'Minsk', country: 'Belarus2'} },
-        // {id: 3, photoUrl: 'https:/img/img.png', followed: true, fullName: 'Marina V', status: 'test statut', location: {city: 'Minsk', country: 'Belarus3'} },
-        // {id: 4, photoUrl: 'https:/img/img.png', followed: true, fullName: 'Sveta V', status: 'test statut', location: {city: 'Minsk', country: 'Belarus4'} }])
+            } )
+        }
+        
     }
-
    
     return <div>
+        <button onClick={getUsers} > getUsers </button>
         {
             props.users.map( u => <div className={s.wrap_flex} key={u.id}>
                 <div className={s.photo_and_button}>
