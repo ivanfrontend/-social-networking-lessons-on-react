@@ -27,3 +27,10 @@
 
 .wi_50{width: 50%;}
 .wi_100{width: 100%;}
+
+.pagination span{cursor: pointer;}
+
+.pagination span.selectedPage{
+    cursor: default;
+    font-weight: bold;
+}
