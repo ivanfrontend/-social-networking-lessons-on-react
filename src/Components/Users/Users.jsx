@@ -2,6 +2,7 @@ import React from 'react';
 import s from './users.module.css';
 import avatar_base from '../../assets/img/avatar_base.png';
 
+
  let Users = (props) => {
 
     let pagesCount = Math.ceil (props.totalUsersCount / props.pageSize)
@@ -11,13 +12,14 @@ import avatar_base from '../../assets/img/avatar_base.png';
             pages.push(i)
         }
 
-    return <div>
+    return <div className={s.w_page_users}>
 
     <div className={s.pagination}>
         { pages.map( p => {
           return <span className={ props.currentPage === p && s.selectedPage} onClick={ () => {props.onPageChanged(p)} }> {p} </span> 
         }) }
     </div>
+    
 {
     props.users.map( u => <div className={s.wrap_flex} key={u.id}>
         <div className={s.photo_and_button}>
