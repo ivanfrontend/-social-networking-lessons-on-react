@@ -62,12 +62,12 @@ let initialState = {
 }
 
 
-export const followedAC = (userId) => ( {type: FOLLOWE, userId} );
-export const unfollowedAC = (userId) => ( {type: UNFOLLOWE, userId} );
-export const setUsersAC = (users) => ( {type: SET_USERS, users } );
-export const setCurrentPageAC = (currentPage) => ( {type: SET_CURRENT_PAGE, currentPage } );
-export const setTottalUsersCountAC = (totalCount) => ( {type: SET_TOTTAL_USERS_COUNT, totalCount } );
-export const toggleIsfetchingAC = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+export const followed = (userId) => ( {type: FOLLOWE, userId} );
+export const unfollowed = (userId) => ( {type: UNFOLLOWE, userId} );
+export const setUsers = (users) => ( {type: SET_USERS, users } );
+export const setCurrentPage = (currentPage) => ( {type: SET_CURRENT_PAGE, currentPage } );
+export const setTottalUsersCount = (totalCount) => ( {type: SET_TOTTAL_USERS_COUNT, totalCount } );
+export const toggleIsfetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 
 // export const sendMessageCreator = () =>({ type: SEND_MESSAGE })
 // export const updateNewMessageBodyCreator = (body) =>({ type: UPDATE_NEW_MESSAGE_BODY, body })
