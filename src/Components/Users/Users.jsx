@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './users.module.css';
 import avatar_base from '../../assets/img/avatar_base.png';
+import {NavLink} from 'react-router-dom';
 
 
  let Users = (props) => {
@@ -23,7 +24,9 @@ import avatar_base from '../../assets/img/avatar_base.png';
 {
     props.users.map( u => <div className={s.wrap_flex} key={u.id}>
         <div className={s.photo_and_button}>
-           <div><img src={u.photos.small ? u.photos.small : avatar_base } alt="ava"/></div> 
+           <div>
+           <NavLink to={"/profile/" + u.id}><img src={u.photos.small ? u.photos.small : avatar_base } alt="ava"/> </NavLink>
+           </div> 
             <div className={s.w_foll}>
                 {u.followed ? <button onClick={ () => props.unfollow(u.id) } >unfollow</button> : <button onClick={ () => props.follow(u.id) } >follow</button>}
             </div>

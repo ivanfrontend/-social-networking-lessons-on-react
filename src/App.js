@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
 import Sidebar from './Components/Sidebar/Sidebar';
-import Profile from './Components/Profile/Profile';
+import ProfileContainer from './Components/Profile/ProfileContainer';
 import Header from './Components/Header/Header';
-import Dialogs from './Components/Dialogs/Dialogs';
 import News from './Components/News/News';
 import {BrowserRouter, Route} from 'react-router-dom';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
@@ -27,7 +26,7 @@ function App(props) {
         </StoreContext.Consumer> */}
         
         <div className="app_content">
-          <Route path='/profile' render={() => <Profile />} />
+          <Route path='/profile' render={() => <ProfileContainer />} />
           <Route path='/dialogs' render={() => <DialogsContainer /> } />
           <Route path='/users' render={() => <UsersContainer />} />
           <Route path='/news' render={() => <News />} />

@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const NEW_POST = 'NEW-POST';
+const STE_USER_FROFILE = 'STE_USER_FROFILE';
 
 let initialState = {
     post:  [
@@ -7,7 +8,8 @@ let initialState = {
         {id: 2, post: 'i\'am fine', likecount: 15},
         {id: 3, post: 'yo', likecount: 8}
     ],
-    newPostText: 'Value default'
+    newPostText: 'Value default',
+    profile: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -22,6 +24,11 @@ const profileReducer = (state = initialState, action) => {
         return{
             ...state,
             newPostText: action.textUser
+        }
+        case STE_USER_FROFILE:
+        return{
+            ...state, 
+            profile: action.profile
         }
         default : 
         return state; 
@@ -43,5 +50,6 @@ export const NewPostActionCreator = (text) =>{
         textUser: text
     }
 }
+export const setUserProfile = (profile) => ({type: STE_USER_FROFILE, profile}) 
 
 export default profileReducer;
