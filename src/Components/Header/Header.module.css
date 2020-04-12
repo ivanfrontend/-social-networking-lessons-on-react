@@ -1,9 +1,16 @@
 .header {
   grid-area: header;
   background: green;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
 }
 
 .header img{
   width: 60px;
+}
+
+.header a{
+  color: #fff;
 }
 

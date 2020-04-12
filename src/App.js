@@ -2,18 +2,18 @@ import React from 'react';
 import './App.css';
 import Sidebar from './Components/Sidebar/Sidebar';
 import ProfileContainer from './Components/Profile/ProfileContainer';
-import Header from './Components/Header/Header';
 import News from './Components/News/News';
 import {BrowserRouter, Route} from 'react-router-dom';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import UsersContainer from './Components/Users/UsersContainer';
+import HeaderContainer from './Components/Header/HeaderContainer';
 // import StoreContext from './StoreContext';
 
 function App(props) {
   let test = "App";
   return (
       <div className={`${test}`}>
-        <Header/>
+        <HeaderContainer />
         <Sidebar />
         {/* <StoreContext.Consumer>
           {
