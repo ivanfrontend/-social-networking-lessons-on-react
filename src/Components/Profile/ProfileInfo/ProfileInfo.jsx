@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './ProfileInfo.module.css'
+import avatar_base from '../../../assets/img/avatar_base.png';
 
 let ProfileInfo = (props) =>{
 
@@ -15,7 +16,7 @@ let ProfileInfo = (props) =>{
             <img src="https://of-crimea.ru/plug/Peschanye-plyazhi-Kryma.jpg" alt='bg' />
           </div>  
           <div>
-            <div><img src={props.profile.photos.small} alt="ava"/></div>
+            <div><img src={props.profile.photos.small ? props.profile.photos.small : avatar_base } alt="ava"/></div>
             <div>
               <ul>
                 { props.profile.aboutMe&& <li>{ props.profile.aboutMe }</li> }
