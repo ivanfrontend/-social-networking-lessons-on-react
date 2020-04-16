@@ -2,7 +2,7 @@ import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import Preloader from '../common/preloader/preloader'
-let Profile = (props) =>{
+let Profile = (props) =>{ 
     if(!props.profile){
         return <Preloader />
     }
