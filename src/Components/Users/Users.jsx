@@ -31,20 +31,24 @@ import {followAPI} from '../../api/api'
            </div> 
             <div className={s.w_foll}>
                 {u.followed 
-                ? <button onClick={ () => { 
-
+                ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={ () => { 
+                    props.togglefollowingProgress(true, u.id)
                     followAPI.unfollow(u.id).then( data => {
                         if(data.resultCode == 0){
                             props.unfollow(u.id) 
+                            
                         }
-                        
+                        props.togglefollowingProgress(false, u.id)
                     }) 
                 } } >unfollow</button> 
-                : <button onClick={ () => {
+                : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={ () => {
+                    props.togglefollowingProgress(true, u.id)
                     followAPI.follow(u.id).then( data => {
                         if(data.resultCode == 0){
                             props.follow(u.id) 
+                            
                         } 
+                        props.togglefollowingProgress(false, u.id)
                     })
                      
                      } } >follow</button>}
