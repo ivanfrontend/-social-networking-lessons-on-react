@@ -1,34 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { followed, unfollowed, setUsers, setCurrentPage, setTottalUsersCount, toggleIsfetching, togglefollowingProgress } from '../../redux/users-reducer';
-import * as axios from 'axios';
+import { followed, unfollowed, setCurrentPage,  togglefollowingProgress, getUsers} from '../../redux/users-reducer';
 import Users from './Users';
 import Preloader from '../common/preloader/preloader';
-import { isersAPI } from '../../api/api';
 
 
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.toggleIsfetching(true)
-
-        isersAPI.getUsers(this.props.currentPage, this.props.pageSize).then( data => {
-            this.props.toggleIsfetching(false)
-            this.props.setUsers(data.items)
-            this.props.setTottalUsersCount(data.totalCount)
-        })
-
-        
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
-        this.props.toggleIsfetching(true)
-        isersAPI.getUsers(pageNumber, this.props.pageSize).then( data => {
-            this.props.toggleIsfetching(false)
-            this.props.setUsers(data.items)
-        })
+        this.props.getUsers(pageNumber, this.props.pageSize)
     }
 
     render() {
@@ -65,24 +51,10 @@ let mapStateToProps = (state) => {
 }
 
 
-// let mapDispatchToProps = (dispatch) => {
-//     return{
-//         setUsers: (users) => {dispatch(setUsersAC(users))},
-//         follow: (userId) => {dispatch(followedAC(userId))},
-//         unfollow: (userId) => {dispatch(unfollowedAC(userId))},
-//         setCurrentPage: (pageNumber) => {dispatch(setCurrentPageAC(pageNumber))},
-//         setTottalUsersCount: (totalCount) => {dispatch(setTottalUsersCountAC(totalCount))},
-//         toggleIsfetching: (isFetching) => {dispatch(toggleIsfetchingAC(isFetching))}
-//     }
-// }
-
-
 export default connect(mapStateToProps, {
-    setUsers,
     followed,
     unfollowed,
     setCurrentPage,
-    setTottalUsersCount,
-    toggleIsfetching,
-    togglefollowingProgress
+    togglefollowingProgress,
+    getUsers
 })(UsersContainer);

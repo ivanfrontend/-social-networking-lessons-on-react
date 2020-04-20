@@ -1,3 +1,5 @@
+import { isersAPI } from "../api/api";
+
 const FOLLOWE = 'FOLLOWE';
 const UNFOLLOWE = 'UNFOLLOWE';
 const SET_USERS = 'SET_USERS';
@@ -71,13 +73,48 @@ let initialState = {
 }
 
 
-export const followed = (userId) => ( {type: FOLLOWE, userId} );
-export const unfollowed = (userId) => ( {type: UNFOLLOWE, userId} );
+export const followedSuccess = (userId) => ( {type: FOLLOWE, userId} );
+export const unfollowedSuccess = (userId) => ( {type: UNFOLLOWE, userId} );
 export const setUsers = (users) => ( {type: SET_USERS, users } );
 export const setCurrentPage = (currentPage) => ( {type: SET_CURRENT_PAGE, currentPage } );
 export const setTottalUsersCount = (totalCount) => ( {type: SET_TOTTAL_USERS_COUNT, totalCount } );
 export const toggleIsfetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 export const togglefollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId});
+
+export const getUsers = (currentPage, pageSize) => {
+ return (dispatch) => {
+        dispatch(toggleIsfetching(true))
+        isersAPI.getUsers(currentPage, pageSize).then( data => {
+            dispatch(toggleIsfetching(false))
+            dispatch(setUsers(data.items))
+            dispatch(setTottalUsersCount(data.totalCount))
+        })
+    }
+}
+
+export const followed = (userId) => {
+    return (dispatch) => {
+        dispatch(togglefollowingProgress(true, userId))
+        isersAPI.follow(userId).then( data => {
+            if(data.resultCode == 0){
+                dispatch(followedSuccess(userId))
+            } 
+            dispatch(togglefollowingProgress(false, userId))
+        })
+       }
+   }
+
+export const unfollowed = (userId) => {
+return (dispatch) => {
+        dispatch(togglefollowingProgress(true, userId))
+        isersAPI.unfollow(userId).then( data => {
+            if(data.resultCode == 0){
+                dispatch(unfollowedSuccess(userId))  
+            }
+            dispatch(togglefollowingProgress(false, userId))
+        })
+    }
+}
 
 // export const sendMessageCreator = () =>({ type: SEND_MESSAGE })
 // export const updateNewMessageBodyCreator = (body) =>({ type: UPDATE_NEW_MESSAGE_BODY, body })
