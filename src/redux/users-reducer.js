@@ -1,4 +1,4 @@
-import { isersAPI } from "../api/api";
+import { usersAPI } from "../api/api";
 
 const FOLLOWE = 'FOLLOWE';
 const UNFOLLOWE = 'UNFOLLOWE';
@@ -84,7 +84,7 @@ export const togglefollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS
 export const getUsers = (currentPage, pageSize) => {
  return (dispatch) => {
         dispatch(toggleIsfetching(true))
-        isersAPI.getUsers(currentPage, pageSize).then( data => {
+        usersAPI.getUsers(currentPage, pageSize).then( data => {
             dispatch(toggleIsfetching(false))
             dispatch(setUsers(data.items))
             dispatch(setTottalUsersCount(data.totalCount))
@@ -95,7 +95,7 @@ export const getUsers = (currentPage, pageSize) => {
 export const followed = (userId) => {
     return (dispatch) => {
         dispatch(togglefollowingProgress(true, userId))
-        isersAPI.follow(userId).then( data => {
+        usersAPI.follow(userId).then( data => {
             if(data.resultCode == 0){
                 dispatch(followedSuccess(userId))
             } 
@@ -107,7 +107,7 @@ export const followed = (userId) => {
 export const unfollowed = (userId) => {
 return (dispatch) => {
         dispatch(togglefollowingProgress(true, userId))
-        isersAPI.unfollow(userId).then( data => {
+        usersAPI.unfollow(userId).then( data => {
             if(data.resultCode == 0){
                 dispatch(unfollowedSuccess(userId))  
             }

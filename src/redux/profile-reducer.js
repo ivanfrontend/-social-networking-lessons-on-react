@@ -1,3 +1,4 @@
+import { usersAPI } from "../api/api";
 const ADD_POST = 'ADD-POST';
 const NEW_POST = 'NEW-POST';
 const STE_USER_FROFILE = 'STE_USER_FROFILE';
@@ -38,18 +39,18 @@ const profileReducer = (state = initialState, action) => {
 
 
 export const AddPostActionCreator = () =>{
-    return{
-        type: ADD_POST
-    }
+    return{ type: ADD_POST}
 }
 
 
 export const NewPostActionCreator = (text) =>{
-    return{
-        type: NEW_POST,
-        textUser: text
-    }
+    return{ type: NEW_POST, textUser: text}
 }
 export const setUserProfile = (profile) => ({type: STE_USER_FROFILE, profile}) 
+export const getUserProfile = (userId) => (dispatch) => {
+    usersAPI.getProfile(userId).then( data => {
+        dispatch(setUserProfile(data))
+    })
+}
 
 export default profileReducer;

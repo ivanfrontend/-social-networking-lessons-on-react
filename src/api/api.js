@@ -8,7 +8,7 @@ const instance = axios.create({
     }
 });
 
-export const isersAPI = {
+export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
     },
@@ -18,16 +18,11 @@ export const isersAPI = {
     follow(userID = 2 ) {
         return instance.post(`follow/${userID}`).then(response => response.data)
     },
+    getProfile(userId) {
+        return instance.get(`profile/${userId}`).then( response => response.data)
+    }
 }
-// export const followAPI = {
-//     unfollow(userID = 2 ) {
-//         return instance.delete(`follow/${userID}`).then(response => response.data)
-//     },
-//     follow(userID = 2 ) {
-//         return instance.post(`follow/${userID}`).then(response => response.data)
-//     },
 
-// }
 
 export const authAPI = {
     auth() {
