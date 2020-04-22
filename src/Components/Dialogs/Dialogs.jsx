@@ -2,8 +2,8 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import Dialog from './Dialog/Dialog'
 import Message from './Message/Message'
-import {NavLink} from "react-router-dom";
-import { updateNewMessageBodyCreator, sendMessageCreator } from '../../redux/dialogs-reducer';
+import {NavLink, Redirect} from "react-router-dom";
+// import { updateNewMessageBodyCreator, sendMessageCreator } from '../../redux/dialogs-reducer';
 
 
 // let addText = React.createRef();
@@ -31,6 +31,10 @@ const Dialogs = (props) => {
     //     let textMess = addText.current.value;
     //     alert(textMess);
     // }
+
+    if(!props.isAuth) return <Redirect to='/login' />
+    // alert(props.isAuth)
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs_items}>
