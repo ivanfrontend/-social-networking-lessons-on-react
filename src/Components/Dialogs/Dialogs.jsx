@@ -27,13 +27,8 @@ const Dialogs = (props) => {
         
     }
 
-    // let addMessage = () =>{
-    //     let textMess = addText.current.value;
-    //     alert(textMess);
-    // }
 
-    if(!props.isAuth) return <Redirect to='/login' />
-    // alert(props.isAuth)
+    // if(!props.isAuth) return <Redirect to='/login' />
 
     return (
         <div className={s.dialogs}>
