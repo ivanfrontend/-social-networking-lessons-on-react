@@ -1,7 +1,8 @@
-import { usersAPI } from "../api/api";
+import { usersAPI, prifileAPI } from "../api/api";
 const ADD_POST = 'ADD-POST';
 const NEW_POST = 'NEW-POST';
 const STE_USER_FROFILE = 'STE_USER_FROFILE';
+const STE_STATUS = 'STE_STATUS';
 
 let initialState = {
     post:  [
@@ -10,7 +11,8 @@ let initialState = {
         {id: 3, post: 'yo', likecount: 8}
     ],
     newPostText: 'Value default',
-    profile: null
+    profile: null,
+    status: ""
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -31,6 +33,11 @@ const profileReducer = (state = initialState, action) => {
             ...state, 
             profile: action.profile
         }
+        case STE_STATUS:
+        return{
+            ...state, 
+            status: action.status
+        }
         default : 
         return state; 
     }
@@ -43,13 +50,25 @@ export const AddPostActionCreator = () =>{
 }
 
 
-export const NewPostActionCreator = (text) =>{
-    return{ type: NEW_POST, textUser: text}
-}
+export const NewPostActionCreator = (text) =>({ type: NEW_POST, textUser: text})
 export const setUserProfile = (profile) => ({type: STE_USER_FROFILE, profile}) 
+export const setStatus = (status) => ({type: STE_STATUS, status}) 
 export const getUserProfile = (userId) => (dispatch) => {
-    usersAPI.getProfile(userId).then( data => {
+    prifileAPI.getProfile(userId).then( data => {
         dispatch(setUserProfile(data))
+    })
+}
+export const getStatus = (userId) => (dispatch) => {
+    prifileAPI.getStatus(userId).then( data => {
+        dispatch(setStatus(data))
+    })
+}
+export const updateStatus = (status) => (dispatch) => {
+    prifileAPI.updateStatus(status).then( data => {
+        if(data.resultCode === 0){
+            dispatch(setStatus(status))
+        }
+        
     })
 }
 

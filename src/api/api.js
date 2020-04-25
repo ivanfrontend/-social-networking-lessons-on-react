@@ -19,10 +19,24 @@ export const usersAPI = {
         return instance.post(`follow/${userID}`).then(response => response.data)
     },
     getProfile(userId) {
-        return instance.get(`profile/${userId}`).then( response => response.data)
+        console.warn('Obsolete method. Please prifileAPI object')
+        return prifileAPI.getProfile(userId)
     }
+    
 }
 
+
+export const prifileAPI = {
+    getProfile(userId) {
+        return instance.get(`profile/${userId}`).then( response => response.data)
+    },
+    getStatus(userId) {
+        return instance.get(`/profile/status/${userId}`).then(response => response.data)
+    },
+    updateStatus(status) {
+        return instance.put(`/profile/status`, {status}).then(response => response.data)
+    }
+}
 
 export const authAPI = {
     auth() {

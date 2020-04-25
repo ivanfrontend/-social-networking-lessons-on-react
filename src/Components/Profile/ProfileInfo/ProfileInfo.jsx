@@ -14,7 +14,7 @@ let ProfileInfo = (props) =>{
             <div><img src={props.profile.photos.small ? props.profile.photos.small : avatar_base } alt="ava"/></div>
             <div>
               <ul>
-                <li><ProfileStatus spatus={'test status'} /></li>
+                <li><ProfileStatus status={props.status} updateStatus={props.updateStatus} /></li>
                 { props.profile.aboutMe&& <li>{ props.profile.aboutMe }</li> }
                 { props.profile.contacts.facebook&& <li>{ props.profile.contacts.facebook }</li>}
                 { props.profile.contacts.github&& <li>{ props.profile.contacts.github}</li> }
