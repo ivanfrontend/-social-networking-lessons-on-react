@@ -1,24 +1,20 @@
 import React from 'react';
 import s from './ProfileInfo.module.css'
 import avatar_base from '../../../assets/img/avatar_base.png';
+import ProfileStatus from './ProfileStatus';
 
 let ProfileInfo = (props) =>{
 
-  console.log(props.profile.contacts.github)
-
-    // let contacts = props.profile.contacts.map( c => {
-    //   console.log(c)
-    //   })
-
     return(
         <div>
-          <div className={s.img_wrap}>
+          {/* <div className={s.img_wrap}>
             <img src="https://of-crimea.ru/plug/Peschanye-plyazhi-Kryma.jpg" alt='bg' />
-          </div>  
+          </div>   */}
           <div>
             <div><img src={props.profile.photos.small ? props.profile.photos.small : avatar_base } alt="ava"/></div>
             <div>
               <ul>
+                <li><ProfileStatus spatus={'test status'} /></li>
                 { props.profile.aboutMe&& <li>{ props.profile.aboutMe }</li> }
                 { props.profile.contacts.facebook&& <li>{ props.profile.contacts.facebook }</li>}
                 { props.profile.contacts.github&& <li>{ props.profile.contacts.github}</li> }
