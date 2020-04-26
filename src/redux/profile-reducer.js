@@ -1,6 +1,5 @@
-import { usersAPI, prifileAPI } from "../api/api";
+import {prifileAPI } from "../api/api";
 const ADD_POST = 'ADD-POST';
-const NEW_POST = 'NEW-POST';
 const STE_USER_FROFILE = 'STE_USER_FROFILE';
 const STE_STATUS = 'STE_STATUS';
 
@@ -10,7 +9,6 @@ let initialState = {
         {id: 2, post: 'i\'am fine', likecount: 15},
         {id: 3, post: 'yo', likecount: 8}
     ],
-    newPostText: 'Value default',
     profile: null,
     status: ""
 };
@@ -20,14 +18,8 @@ const profileReducer = (state = initialState, action) => {
         case ADD_POST:
             return{
                 ...state,
-                post: [...state.post, {id: 4, post: state.newPostText, likecount: 0}],
-                newPostText: ''
+                post: [...state.post, {id: 4, post: action.newPostText, likecount: 0}],
             }
-        case NEW_POST: 
-        return{
-            ...state,
-            newPostText: action.textUser
-        }
         case STE_USER_FROFILE:
         return{
             ...state, 
@@ -45,16 +37,12 @@ const profileReducer = (state = initialState, action) => {
 }
 
 
-export const AddPostActionCreator = () =>{
-    return{ type: ADD_POST}
-}
-
-
-export const NewPostActionCreator = (text) =>({ type: NEW_POST, textUser: text})
+export const AddPost = (newPostText) =>({ type: ADD_POST, newPostText})
 export const setUserProfile = (profile) => ({type: STE_USER_FROFILE, profile}) 
 export const setStatus = (status) => ({type: STE_STATUS, status}) 
 export const getUserProfile = (userId) => (dispatch) => {
     prifileAPI.getProfile(userId).then( data => {
+        
         dispatch(setUserProfile(data))
     })
 }
