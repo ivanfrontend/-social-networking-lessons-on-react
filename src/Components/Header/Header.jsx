@@ -9,7 +9,7 @@ let Header = (props) =>{
             <NavLink to={'/'}> <img src="http://s1.iconbird.com/ico/0612/VistaStyleSportIconSet/w256h2561339399100SoccerBall.png" alt='ball'></img> </NavLink>
           </div>
           <div>
-            <div>{props.isAuth ? props.login : <NavLink to={'/login'}>Логин</NavLink> }</div>
+            <div>{props.isAuth ? <span> {props.login} <button onClick={props.logout}> Выход </button> </span>  : <NavLink to={'/login'}>Логин</NavLink> }</div>
             
           </div>
         </header>
