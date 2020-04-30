@@ -5,17 +5,9 @@ import { getUserData, logout } from '../../redux/auth-reducer';
 import Preloader from '../common/preloader/preloader';
 
 class HeaderContainer extends React.Component {
-
-    componentDidMount() {
-        this.props.getUserData()
-    }
-
     render() {
-        // if(!this.props.isAuth) return <Preloader />
-
         return <Header {...this.props} />
     }
-
 }
 
 
@@ -26,6 +18,6 @@ const mapStateToprops = (state) => {
     }
 }
 
-export default connect(mapStateToprops, {getUserData, logout})(HeaderContainer)
+export default connect(mapStateToprops, {logout})(HeaderContainer)
 
 
