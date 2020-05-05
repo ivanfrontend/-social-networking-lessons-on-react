@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './ProfileInfo.module.css'
 import avatar_base from '../../../assets/img/avatar_base.png';
-import ProfileStatus from './ProfileStatus';
+import ProfileStatusWithHook from './ProfileStatusWithHook';
 
 let ProfileInfo = (props) =>{
 
@@ -14,7 +14,7 @@ let ProfileInfo = (props) =>{
             <div><img src={props.profile.photos.small ? props.profile.photos.small : avatar_base } alt="ava"/></div>
             <div>
               <ul>
-                <li><ProfileStatus status={props.status} updateStatus={props.updateStatus} /></li>
+                <li><ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus} /></li>
                 { props.profile.aboutMe&& <li>{ props.profile.aboutMe }</li> }
                 { props.profile.contacts.facebook&& <li>{ props.profile.contacts.facebook }</li>}
                 { props.profile.contacts.github&& <li>{ props.profile.contacts.github}</li> }
