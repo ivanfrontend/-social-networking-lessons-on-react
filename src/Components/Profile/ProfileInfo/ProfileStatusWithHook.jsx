@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const ProfileStatusWithHook = (props) =>  {
 
     
     let [elitMod, setEditMod ] = useState(false)
     let [status, setStatus ] = useState(props.status)
-    // let ststeWithSetState = useState(true)
-    // let elitMod = ststeWithSetState[0]
-    // let setEditMod = ststeWithSetState[1]
+
+    useEffect( () => {
+        setStatus(props.status)
+    }, [props.status] )
 
     const activeEditMode = () => {
         setEditMod(true)
