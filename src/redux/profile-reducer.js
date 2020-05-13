@@ -2,6 +2,7 @@ import {prifileAPI } from "../api/api";
 const ADD_POST = 'ADD-POST';
 const STE_USER_FROFILE = 'STE_USER_FROFILE';
 const STE_STATUS = 'STE_STATUS';
+const DELETE_POST = 'DELETE_POST';
 
 let initialState = {
     post:  [
@@ -30,6 +31,8 @@ const profileReducer = (state = initialState, action) => {
             ...state, 
             status: action.status
         }
+        case DELETE_POST: 
+        return{ ...state, post: state.post.filter( p => p.id != action.postId ) }
         default : 
         return state; 
     }
@@ -40,6 +43,8 @@ const profileReducer = (state = initialState, action) => {
 export const AddPost = (newPostText) =>({ type: ADD_POST, newPostText})
 export const setUserProfile = (profile) => ({type: STE_USER_FROFILE, profile}) 
 export const setStatus = (status) => ({type: STE_STATUS, status}) 
+export const deletePost = (postId) => ({type: DELETE_POST, postId}) 
+
 export const getUserProfile = (userId) => (dispatch) => {
     prifileAPI.getProfile(userId).then( data => {
         
