@@ -22,7 +22,8 @@ let AddNewPostForm = (props) => {
     )
 }
 const MyPostReduxForm = reduxForm({form: 'ProfileAddNewPostForm'})(AddNewPostForm)
-let MyPosts = (props) =>{
+// PureComponent // Для класовой компоненты наследоваться из PureComponent также надо сделать import React, {PureComponent} from 'react';
+let MyPosts = React.memo((props) =>{
     
     let posts = props.posts.map( post => <Post massage={post.post} key={post.id} like={post.likecount} />);
 
@@ -40,6 +41,6 @@ let MyPosts = (props) =>{
             </div>
          
     );
-}
+})
 
 export default MyPosts;
