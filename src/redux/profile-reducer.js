@@ -45,24 +45,19 @@ export const setUserProfile = (profile) => ({type: STE_USER_FROFILE, profile})
 export const setStatus = (status) => ({type: STE_STATUS, status}) 
 export const deletePost = (postId) => ({type: DELETE_POST, postId}) 
 
-export const getUserProfile = (userId) => (dispatch) => {
-    prifileAPI.getProfile(userId).then( data => {
-        
+export const getUserProfile = (userId) => async (dispatch) => {
+  let data = await prifileAPI.getProfile(userId)
         dispatch(setUserProfile(data))
-    })
 }
-export const getStatus = (userId) => (dispatch) => {
-    prifileAPI.getStatus(userId).then( data => {
+export const getStatus = (userId) => async (dispatch) => {
+   let data = await prifileAPI.getStatus(userId)
         dispatch(setStatus(data))
-    })
 }
-export const updateStatus = (status) => (dispatch) => {
-    prifileAPI.updateStatus(status).then( data => {
+export const updateStatus = (status) => async (dispatch) => {
+   let data = await prifileAPI.updateStatus(status)
         if(data.resultCode === 0){
             dispatch(setStatus(status))
         }
-        
-    })
 }
 
 export default profileReducer;
