@@ -9,7 +9,7 @@ import User from './User';
     return <div className={s.w_page_users}>
 
     <Pagination 
-    totalUsersCount ={totalUsersCount} 
+    totalItemsCount ={totalUsersCount} 
     pageSize={pageSize}
     currentPage={currentPage}
     onPageChanged={onPageChanged}
