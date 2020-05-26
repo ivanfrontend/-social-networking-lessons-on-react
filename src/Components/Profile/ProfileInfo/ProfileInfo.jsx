@@ -5,13 +5,22 @@ import ProfileStatusWithHook from './ProfileStatusWithHook';
 
 let ProfileInfo = (props) =>{
 
+  const onMainPhotoSilected = (e) => {
+    if(e.target.files.length){
+      props.savePhoto(e.target.files[0])
+    }
+  }
+
     return(
+      
         <div>
-          {/* <div className={s.img_wrap}>
-            <img src="https://of-crimea.ru/plug/Peschanye-plyazhi-Kryma.jpg" alt='bg' />
-          </div>   */}
           <div>
-            <div><img src={props.profile.photos.small ? props.profile.photos.small : avatar_base } alt="ava"/></div>
+            {/* <div><img src={props.profile.photos.large ? props.profile.photos.large : avatar_base } alt="ava"/></div> */}
+            <div>
+              
+              <img src={props.profile.photos ? props.profile.photos.large : avatar_base } alt="ava"/>
+              {props.isOwner && <input type={"file"} onChange={onMainPhotoSilected} /> }
+              </div>
             <div>
               <ul>
                 <li><ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus} /></li>
